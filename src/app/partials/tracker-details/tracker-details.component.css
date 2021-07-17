@@ -1,0 +1,29 @@
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid lightgray;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+.heading {
+  background-color: lightblue;
+  padding: 4px 8px;
+}
+
+@media only screen and (max-width: 420px) {
+  table {
+    width: 100%
+  }
+
+  td, th {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

@@ -1,0 +1,18 @@
+<h3 *ngIf="heading" class="heading">{{heading}}</h3>
+<div *ngIf="records.length > 0">
+  <table>
+    <tr>
+      <th *ngIf="!heading.includes('@')">Email Address</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+    </tr>
+
+    <tr *ngFor="let recordItem of records">
+      <td *ngIf="!heading.includes('@')">{{recordItem.email}}</td>
+      <td>{{recordItem.start}}</td>
+      <td>{{recordItem.end}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="heading.length !== 0 && records.length === 0">No Records</div>

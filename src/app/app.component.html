@@ -1,0 +1,44 @@
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="App Logo"
+    src="https://www.svgrepo.com/show/101623/clock.svg"
+  />
+  <span>Time Tracker</span>
+</div>
+
+<div class="content" role="main">
+  <div class="section">
+    <app-tracker-form 
+      (detailsUpdated)="detailsUpdatedHandler($event)" 
+      (resetResults)="resetResultsHandler($event)" 
+      (searchError)="searchErrorHandler($event)">
+    </app-tracker-form>
+    
+    <app-tracker-details 
+      [records]="trackingRecords" 
+      [heading]="heading">
+    </app-tracker-details>
+
+    <div *ngIf="searchStatus === 'error'" class="status error">
+      Sorry, there was an error!
+    </div>
+
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

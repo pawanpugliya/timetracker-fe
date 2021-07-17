@@ -1,0 +1,35 @@
+<form [formGroup]="trackerForm" (ngSubmit)="submit()" novalidate>
+  <label for="emailAddress">Email Address</label>
+  <input type="email" name="emailAddress" formControlName="emailAddress">
+  <br>
+
+  <label for="option">Please select</label>
+  <input type="radio" id="save" value="save" name="option" formControlName="option">
+  <label for="save">Save</label>
+  <input type="radio" id="search" value="search" name="option" formControlName="option">
+  <label for="search">Search</label>
+  <br>
+
+  <div *ngIf="f.option.value === 'save'">
+    <label for="startTime">Start Time</label>
+    <input type="datetime-local" name="startTime" formControlName="startTime">
+    <br>
+
+    <label for="endTime">End Time</label>
+    <input type="datetime-local" name="endTime" formControlName="endTime">
+    <br>
+  </div>
+
+  <input type="submit" value="Submit" [disabled]="!trackerForm.valid">
+</form>
+
+<div *ngIf="saveStatus === 'success' || saveStatus === 'error'" class="status" [ngClass]="saveStatus">
+  {{saveStatus === 'success' ? 'The tracking details are saved successfully!' : 'Error saving the tracking details!'}}
+</div>
+
+<div *ngIf="searchStatus === 'error'" class="status error">
+  Sorry, there was an error!
+</div>
+
+<div class="separator"></div>
+<button (click)="handleTopRecords($event)">Load Top-10 records</button>
