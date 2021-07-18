@@ -18,8 +18,8 @@ export class TrackerFormComponent implements OnInit {
   trackerForm = this.fb.group({
     emailAddress: ['', Validators.required],
     option: ['save', Validators.required],
-    startTime: [new Date().toISOString().slice(0, -8), Validators.required],
-    endTime: [new Date().toISOString().slice(0, -8), Validators.required]
+    startTime: [new Date(), Validators.required],
+    endTime: [new Date(), Validators.required]
   });
 
   trackingDetails: IRecord[] = [];
